@@ -4,17 +4,17 @@ use ieee.numeric_std.all;
 
 entity Reg16Bit is 
 	port(
-		clk     : in std_logic;
-		wrEn    : in std_logic;
-		rst     : in std_logic;
-		dataIn  : in unsigned (15 downto 0);
+		clk     : in std_logic;                 --Clock signal
+		wrEn    : in std_logic;                 --Write enable pin
+		rst     : in std_logic;                 --Reset pin
+		dataIn  : in unsigned (15 downto 0);   
 		dataOut : out unsigned (15 downto 0)
 		);
 	end entity;
 	
 architecture a_Reg16Bit of Reg16Bit is
 	signal dataTemp : unsigned (15 downto 0) := "0000000000000000";
-	--valor padrão 0 de registrador
+	--Value stored on register starts at 0 by default
 	begin
 	
 	process(clk, wrEn, rst)
@@ -23,7 +23,7 @@ architecture a_Reg16Bit of Reg16Bit is
 			dataTemp <= "0000000000000000";
 		
 		elsif wrEn = '1' then
-			if rising_edge(clk) then --se enable ligado e clock de subida então:
+			if rising_edge(clk) then --if write enable and clock is on rising edge, then
 				dataTemp <= dataIn;
 			end if;
 		end if;
