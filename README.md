@@ -1,2 +1,2 @@
 # uProcessorDesign
-Arquivos de design de um micro processador em linguagem VHDL desenvolvidos durante a disciplina de Arquitetura de Computadores
+Files on a micro processor project built in VHDL language, with guidelines set by professor Julino Mourão Vieira on discipline Computer Architectures at UTFPR 
