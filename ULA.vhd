@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ULA is
+entity ULA is -- Arithmetic Logic Unit, Unidade Lógico Aritmética in portuguese
 	port(
 		inA : in unsigned (15 downto 0);
 		inB : in unsigned (15 downto 0);
@@ -12,15 +12,15 @@ entity ULA is
 		);
 	end ULA;
 	
-	-- tabela para opcode:
-	--000 - adição
-	--001 - subtração
-	--010 - incremento em inA
-	--011 - decremento em inA
-	--100 - multiplicação
-	--101 - inversão bit-a-bit em inA
-	--110 - and bit a bit
-	--111 - or bit a bit
+	-- Opcode Table:
+	--000 - addition
+	--001 - subtraction
+	--010 - Increment
+	--011 - Decrement
+	--100 - Multiplication
+	--101 - Bitwise inversion
+	--110 - Bitwise and
+	--111 - Bitwise or
 	
 	
 	architecture a_ULA of ULA is
