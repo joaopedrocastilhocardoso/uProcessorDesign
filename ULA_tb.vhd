@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity ULA_tb is
 end ULA_tb;
 
-architecture teste of ULA_tb is
+architecture test of ULA_tb is
     component ULA
         port(
             inA : in unsigned (15 downto 0);
@@ -16,13 +16,18 @@ architecture teste of ULA_tb is
         );
     end component;
 
+    -- Signal declations for testbench
+	
     signal tb_inA, tb_inB, tb_outp : unsigned (15 downto 0);
     signal tb_opCode : unsigned (2 downto 0) := "000";
     signal tb_fZero : std_logic;
+
+    -- Constant declarations for testbench
+
     constant X : unsigned (15 downto 0) := "0110011011000111";
     constant Y : unsigned (15 downto 0) := "0011110100111101";
     constant Z : unsigned (15 downto 0) := "0000000000000010";
-	constant ZERO: unsigned (15 downto 0) := "0000000000000000";
+    constant ZERO : unsigned (15 downto 0) := "0000000000000000";
     
 begin
     ULA_1 : ULA
@@ -58,7 +63,7 @@ begin
         tb_inB <= Z;
         wait for 50 ns;
 		
-		tb_opCode <= "100";
+	tb_opCode <= "100";
         tb_inA <= X;
         tb_inB <= ZERO;
         wait for 50 ns;
@@ -77,4 +82,4 @@ begin
 
         wait;
     end process;
-end teste;
+end test;
