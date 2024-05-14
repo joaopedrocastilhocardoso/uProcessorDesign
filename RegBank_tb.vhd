@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity RegBank_tb is
 end entity; 
 
-architecture teste of RegBank_tb is
+architecture test of RegBank_tb is
 	component RegBank is
 		port(
 			clk, rst, wrEn : in std_logic;
@@ -39,14 +39,14 @@ architecture teste of RegBank_tb is
 		dataOut => dataOut_tb
 	);
 				
-	sim_time_proc :  process begin -- tempo de simulação
+	sim_time_proc :  process begin -- total time for simulation
 				
 		wait for 10 us;
 		finished <= '1';
 		wait;
 	end process sim_time_proc; 
 			
-	clk_proc : process begin -- sinal de clock					
+	clk_proc : process begin -- clock signal					
 			while finished /= '1' loop
 			clk_tb <= '0';
 			wait for period_time/2;
@@ -56,14 +56,14 @@ architecture teste of RegBank_tb is
 		wait;
 	end process clk_proc;
 			
-	reset_global : process begin -- sinal de reset_global
+	reset_global : process begin -- global reset signal
 		rst_tb <= '1';
 		wait for period_time*2;
 		rst_tb <= '0';
 		wait;
 	end process reset_global;
 				
-	testing_process : process begin -- linha de comandos para testar o banco de registradores
+	testing_process : process begin -- command line for register bank testing
 		wait for period_time*2;
 		regCode_tb <= "101";
 		dataIn_tb <= X;
@@ -83,7 +83,7 @@ architecture teste of RegBank_tb is
 		regCode_tb <= "001";
 		wait;
 	end process testing_process;
-end architecture teste;			
+end architecture test;			
 					
 					
 			
