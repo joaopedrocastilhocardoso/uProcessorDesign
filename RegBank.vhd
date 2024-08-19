@@ -7,7 +7,8 @@ entity RegBank is
 		clk, rst, wrEn : in std_logic;
 		regCode        : in unsigned(2 downto 0);
 		dataIn         : in unsigned(15 downto 0); 
-		dataOut        : out unsigned(15 downto 0)
+		dataOut        : out unsigned(15 downto 0);
+		reg7Out        : out unsigned(15 downto 0)
 	);
 	end entity RegBank;
 	
@@ -27,7 +28,7 @@ entity RegBank is
 		begin
 		-- MUX for register wrEn selection
 		
-		wrEn0 <= '1' when regCode = "000" and wrEn = '1' else '0';
+		wrEn0 <= '0'; -- register 0 has value 0 and can't be changed, this makes other operations and comparisons easier.
 		wrEn1 <= '1' when regCode = "001" and wrEn = '1' else '0';
 		wrEn2 <= '1' when regCode = "010" and wrEn = '1' else '0';
 		wrEn3 <= '1' when regCode = "011" and wrEn = '1' else '0';
@@ -58,5 +59,7 @@ entity RegBank is
 		dataOut6 when regCode = "110" else
 		dataOut7 when regCode = "111" else 
 		"0000000000000000";
+		
+		reg7Out <= dataOut7;
 		
 	end architecture a_RegBank;
